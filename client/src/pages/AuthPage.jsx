@@ -1,39 +1,61 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 export default function AuthPage() {
-  const [mode, setMode] = useState('login')
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [mode, setMode] = useState("login");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const toggleMode = () => {
-    setMode(prev => (prev === 'login' ? 'signup' : 'login'))
-    setName('')
-    setEmail('')
-    setPassword('')
-  }
+    setMode((prev) => (prev === "login" ? "signup" : "login"));
+    setName("");
+    setEmail("");
+    setPassword("");
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const endpoint = mode === 'signup' ? '/api/users/signup' : '/api/users/login'
-    const payload = mode === 'signup' ? { name, email, password } : { email, password }
+    e.preventDefault();
+    const endpoint = mode === "signup" ? "/signup" : "/login";
+    const payload =
+      mode === "signup" ? { email, password } : { email, password };
 
     try {
       const response = await fetch(`http://localhost:5000${endpoint}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      })
+      });
 
-      const data = await response.json()
-      if (!response.ok) throw new Error(data.error || 'Request failed')
+      const data = await response.json();
 
-      alert(`${mode === 'signup' ? 'Signup' : 'Login'} successful!`)
-      localStorage.setItem('token', data.token)
+      if (!response.ok) throw new Error(data.error || "Request failed");
+
+      localStorage.setItem(
+        "token",
+        JSON.stringify(data.session?.access_token || "")
+      );
+      alert(`${mode === "signup" ? "Signup" : "Login"} successful!`);
+
+      if (mode === "signup") {
+        window.location.href = "/userdata"; // or any signup-specific page
+      } else {
+        window.location.href = "/"; // or main page for logged in users
+      }
     } catch (err) {
-      alert(err.message)
+      alert(err.message);
+
+      if (
+        mode === "login" &&
+        err.message.includes("Invalid login credentials")
+      ) {
+        if (
+          window.confirm("User not found. Would you like to sign up instead?")
+        ) {
+          setMode("signup");
+        }
+      }
     }
-  }
+  };
 
   return (
     <div className="flex w-screen items-center justify-center min-h-screen bg-[#f5f5f4]">
@@ -41,12 +63,14 @@ export default function AuthPage() {
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-green-700">ReWear</h1>
           <p className="text-sm text-gray-500">
-            {mode === 'login' ? 'Welcome back! Please login.' : 'Create a new account to get started.'}
+            {mode === "login"
+              ? "Welcome back! Please login."
+              : "Create a new account to get started."}
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {mode === 'signup' && (
+          {mode === "signup" && (
             <input
               type="text"
               placeholder="Full Name"
@@ -76,20 +100,22 @@ export default function AuthPage() {
             type="submit"
             className="w-full py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
           >
-            {mode === 'login' ? 'Login' : 'Sign Up'}
+            {mode === "login" ? "Login" : "Sign Up"}
           </button>
         </form>
 
         <p className="mt-6 text-center text-sm text-gray-600">
-          {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}{' '}
+          {mode === "login"
+            ? "Don't have an account?"
+            : "Already have an account?"}{" "}
           <span
             onClick={toggleMode}
             className="text-green-600 font-semibold cursor-pointer hover:underline"
           >
-            {mode === 'login' ? 'Sign up' : 'Login'}
+            {mode === "login" ? "Sign up" : "Login"}
           </span>
         </p>
       </div>
     </div>
-  )
+  );
 }

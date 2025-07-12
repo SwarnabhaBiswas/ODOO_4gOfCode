@@ -107,7 +107,7 @@ export default function UserData() {
             placeholder="Phone Number"
             value={user.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 bg-green-50"
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 bg-green-50 text-gray-800"
           />
 
           <button
