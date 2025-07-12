@@ -1,10 +1,10 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Landing from "./pages/Landing";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
 import Exchange from "./pages/Exchange"; // ✅ Import
 import UserData from "./pages/UserData"; // ✅ Import
-import ProfileView from "./pages/ProfileView"; // ✅ Import
+import AuthPage from './pages/Authpage' 
+import ProfileView from "./pages/ProfileView"; 
+
 
 export default function App() {
   return (
@@ -15,23 +15,25 @@ export default function App() {
           ReWear
         </Link>
 
-        {/* Navigation Links */}
         <div className="flex space-x-6 font-medium">
           <Link to="/" className="hover:text-green-600 transition">Home</Link>
           <Link to="/exchange" className="hover:text-green-600 transition">Exchange</Link>
-          <Link to="/login" className="hover:text-green-600 transition">Login</Link>
-          <Link to="/signup" className="hover:text-green-600 transition">Signup</Link>
+          <Link to="/authpage">Login/Signup</Link>
+
+          
         </div>
+
 
       </nav>
 
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/exchange" element={<Exchange />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
         <Route path="/userdata" element={<UserData />} />
         <Route path="/profileview" element={<ProfileView />} />
+        <Route path="/authpage" element={<AuthPage />} />
+
+
       </Routes>
     </div>
   );
