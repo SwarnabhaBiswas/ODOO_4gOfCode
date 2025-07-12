@@ -7,16 +7,24 @@ import Exchange from './pages/Exchange' // ✅ Import
 export default function App() {
   return (
     <div>
-      <nav className='flex justify-around bg-blue-500 p-4 text-white'>
-        <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
-        <Link to="/exchange" style={{ marginRight: '1rem' }}>Exchange</Link> {/* ✅ */}
-        <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
-        <Link to="/signup">Signup</Link>
+      <nav className="flex justify-between items-center bg-green shadow-md px-6 py-4 text-gray-800">
+        {/* Brand */}
+        <Link to="/" className="text-2xl font-semibold text-blue-600 tracking-wide">
+          ReWear
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="flex space-x-6 font-medium">
+          <Link to="/" className="hover:text-green-600 transition">Home</Link>
+          <Link to="/exchange" className="hover:text-green-600 transition">Exchange</Link>
+          <Link to="/login" className="hover:text-green-600 transition">Login</Link>
+          <Link to="/signup" className="hover:text-green-600 transition">Signup</Link>
+        </div>
       </nav>
 
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/exchange" element={<Exchange />} /> {/* ✅ */}
+        <Route path="/exchange" element={<Exchange />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
