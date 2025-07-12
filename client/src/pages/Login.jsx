@@ -1,4 +1,4 @@
-export const Login = async (e, email, password) => {
+export default Login = async (e, email, password) => {
   e.preventDefault();
 
   const res = await fetch("http://localhost:5000/login", {

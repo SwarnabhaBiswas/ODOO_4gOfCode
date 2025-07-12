@@ -1,11 +1,14 @@
 import { Routes, Route, Link } from 'react-router-dom'
 import Landing from './pages/Landing'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
+import AuthPage from './pages/Authpage';
 import Exchange from './pages/Exchange' // ✅ Import
 import NGOs from './pages/NGOs';
 import Listing  from './pages/Listing'
 import Map from "./pages/Map";
+import ProtectedRoute from './Components/ProtectedRoute';
+import UserData from './pages/UserData';  
+import ProfileView from './pages/ProfileView'; 
+
 
 
 export default function App() {
