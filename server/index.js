@@ -1,14 +1,28 @@
-const express = require("express");
-const cors = require("cors");
-const multer = require("multer");
-const path = require("path");
+import express from "express";
+import cors from "cors";
+import multer from "multer";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+import { createClient } from "@supabase/supabase-js";
+
+
+
+const supabaseUrl = 'https://rccushzngrtnozvgpiij.supabase.co'
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJjY3VzaHpuZ3J0bm96dmdwaWlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIzMTE4MzUsImV4cCI6MjA2Nzg4NzgzNX0.Z6UzDGNoavi-EjwB0Hj6BMn9-M0fItOqAlakxw7A8TM'
+
+export const supabase = createClient(supabaseUrl, supabaseKey)
 
 const app = express();
 const PORT = 5000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 
 app.use(cors());
 app.use(express.json());
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const storage = multer.diskStorage({
   destination: "uploads/",
@@ -18,12 +32,32 @@ const upload = multer({ storage });
 
 let items = [];
 
+app.post("/signup", async (req, res) => {
+  const { email, password } = req.body;
+  const { data, error } = await supabase.auth.signUp({ email, password });
+  if (error) return res.status(400).json({ error: error.message });
+  res.status(200).json({ user: data.user });
+});
+
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  if (error) return res.status(401).json({ error: error.message });
+  res.status(200).json({ user: data.user, session: data.session });
+});
+
+
 app.get("/items", (req, res) => {
   res.json(items);
 });
 
 app.post("/items", upload.single("image"), (req, res) => {
-  const { title, category, size, condition } = req.body;
+  if (!req.body || Object.keys(req.body).length === 0) {
+  return res.status(400).json({ error: "Request body is missing or invalid." });
+}
+
+const { title, category, size, condition, price, want } = req.body;
+
   const image = req.file ? `/uploads/${req.file.filename}` : null;
 
   const newItem = {
@@ -33,9 +67,12 @@ app.post("/items", upload.single("image"), (req, res) => {
   size,
   condition,
   image,
+  price,
+  want,
   listed: true,
   sold: false
 };
+
   items.push(newItem);
   res.status(201).json(newItem);
 });

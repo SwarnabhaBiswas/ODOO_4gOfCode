@@ -1,37 +1,22 @@
-import { useState } from 'react'
+export const Login = async (e, email, password) => {
+  e.preventDefault();
 
-export default function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const res = await fetch("http://localhost:5000/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
 
-  const handleLogin = (e) => {
-    e.preventDefault()
-    alert(`Logging in with ${email} and ${password}`)
-    // Send login request to backend
+  const data = await res.json();
+  if (res.ok) {
+    alert("Login successful!");
+    // You can store session info here if needed
+  } else {
+    if (data.error?.includes("Invalid login credentials")) {
+      alert("User not found or wrong password. Redirecting to signup...");
+      window.location.href = "/signup";
+    } else {
+      alert(`Login failed: ${data.error}`);
+    }
   }
-
-  return (
-    <div style={{ padding: '2rem', maxWidth: '400px', margin: 'auto' }}>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          style={{ display: 'block', width: '100%', marginBottom: '1rem' }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          style={{ display: 'block', width: '100%', marginBottom: '1rem' }}
-        />
-        <button type="submit" style={{ width: '100%' }}>Login</button>
-      </form>
-    </div>
-  )
-}
+};
