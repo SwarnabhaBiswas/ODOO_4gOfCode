@@ -3,8 +3,7 @@ import Landing from "./pages/Landing";
 import Exchange from "./pages/Exchange"; // ✅ Import
 import UserData from "./pages/UserData"; // ✅ Import
 import AuthPage from './pages/Authpage' 
-import ProfileView from "./pages/ProfileView"; // ✅ Import
-import Map from "./pages/map"; // ✅ Import
+import ProfileView from "./pages/ProfileView"; 
 
 
 export default function App() {
@@ -20,8 +19,8 @@ export default function App() {
           <Link to="/" className="hover:text-green-600 transition">Home</Link>
           <Link to="/exchange" className="hover:text-green-600 transition">Exchange</Link>
           <Link to="/authpage">Login/Signup</Link>
-          <Link to="/map"> Map</Link>
 
+          
         </div>
 
 
@@ -33,7 +32,7 @@ export default function App() {
         <Route path="/userdata" element={<UserData />} />
         <Route path="/profileview" element={<ProfileView />} />
         <Route path="/authpage" element={<AuthPage />} />
-        <Route path="/map" element={<Map />} />
+
 
       </Routes>
     </div>
