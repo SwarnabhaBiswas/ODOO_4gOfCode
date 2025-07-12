@@ -53,7 +53,7 @@ export default function Landing() {
           <Link to="/exchange" className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold shadow-md transition">
             Browse Items
           </Link>
-          <Link to="/dashboard" className="bg-white border border-green-600 text-green-700 px-6 py-3 rounded-full font-semibold shadow-md hover:bg-green-50 transition">
+          <Link to="/exchange" className="bg-white border border-green-600 text-green-700 px-6 py-3 rounded-full font-semibold shadow-md hover:bg-green-50 transition">
             List an Item
           </Link>
         </div>
@@ -105,7 +105,7 @@ export default function Landing() {
 
           {/* CTA Button */}
           <Link
-            to="/dashboard"
+            to="/exchange"
             className="inline-block bg-green-600 text-white text-lg font-semibold px-8 py-3 rounded-full shadow-md hover:bg-green-700 transition"
           >
             Explore our wardrobe
@@ -144,7 +144,7 @@ export default function Landing() {
           </p>
 
           <Link
-            to="/ngos"
+            to="/exchange"
             className="inline-block bg-green-600 text-white text-lg font-semibold px-8 py-3 rounded-full shadow-md hover:bg-green-700 transition"
           >
             More About NGOs
