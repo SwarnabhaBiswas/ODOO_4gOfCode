@@ -9,17 +9,10 @@ import ProfileView from "./pages/ProfileView"; // ✅ Import
 export default function App() {
   return (
     <div>
-      <nav className="flex justify-items align-items">
-        <Link to="/" style={{ marginRight: "1rem" }}>
-          Home
-        </Link>
-        <Link to="/exchange" style={{ marginRight: "1rem" }}>
-          Exchange
-        </Link>{" "}
-        {/* ✅ */}
-        <Link to="/login" style={{ marginRight: "1rem" }}>
-          Login
-        </Link>
+      <nav >
+        <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
+        <Link to="/exchange" style={{ marginRight: '1rem' }}>Exchange</Link> {/* ✅ */}
+        <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
         <Link to="/signup">Signup</Link>
         <Link to="/userdata"> UserData</Link>
         <Link to="/profileview"> ProfileView</Link>
