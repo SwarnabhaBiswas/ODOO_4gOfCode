@@ -1,46 +1,16 @@
-import { useState } from 'react'
+export const Signup = async (e) => {
+  e.preventDefault();
 
-export default function Signup() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [name, setName] = useState('')
+  const res = await fetch("http://localhost:5000/auth/signup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
 
-  const handleSignup = (e) => {
-    e.preventDefault()
-    alert(`Signing up as ${name} with ${email}`)
-    // Send signup request to backend
+  const data = await res.json();
+  if (res.ok) {
+    alert("Signup successful!");
+  } else {
+    alert(`Signup failed: ${data.error}`);
   }
-
-  return (
-    <div style={{ padding: '2rem', maxWidth: '400px', margin: 'auto' }}>
-      <h2>Signup</h2>
-      <form onSubmit={handleSignup}>
-        <input
-          type="text"
-          placeholder="Full Name"
-          required
-          value={name}
-          onChange={e => setName(e.target.value)}
-          style={{ display: 'block', width: '100%', marginBottom: '1rem' }}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          style={{ display: 'block', width: '100%', marginBottom: '1rem' }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          style={{ display: 'block', width: '100%', marginBottom: '1rem' }}
-        />
-        <button type="submit" style={{ width: '100%' }}>Signup</button>
-      </form>
-    </div>
-  )
-}
+};
