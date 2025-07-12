@@ -41,6 +41,7 @@ export default function Landing() {
   };
 
   return (
+
     <div className="bg-white w-screen min-h-screen text-gray-800">
       {/* Hero Section */}
       <section className="text-center py-16 px-4 bg-green-50">
@@ -151,6 +152,7 @@ export default function Landing() {
           </Link>
         </div>
       </section>
+
 
     </div>
   );
