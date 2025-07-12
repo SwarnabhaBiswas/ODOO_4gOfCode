@@ -8,17 +8,22 @@ import ProfileView from "./pages/ProfileView"; // ✅ Import
 
 export default function App() {
   return (
-    <div >
-      <nav className="sticky top-0 bg-gray-800 shadow p-4 flex justify-between items-center">
-        <div className="flex items-center">
-          <img src="/logo.png" alt="Logo" className="h-8 w-8 mr-2" />
-          <span className="font-bold text-xl text-white">ReWear</span>
+    <div>
+      <nav className="flex justify-between items-center bg-green shadow-md px-6 py-4 text-gray-800">
+        {/* Brand */}
+        <Link to="/" className="text-2xl font-semibold text-blue-600 tracking-wide">
+          ReWear
+        </Link>
+
+        {/* Navigation Links */}
+        <div className="flex space-x-6 font-medium">
+          <Link to="/" className="hover:text-green-600 transition">Home</Link>
+          <Link to="/exchange" className="hover:text-green-600 transition">Exchange</Link>
+          <Link to="/login" className="hover:text-green-600 transition">Login</Link>
+          <Link to="/signup" className="hover:text-green-600 transition">Signup</Link>
         </div>
-        <div className="flex items-center space-x-8">
-          <Link to="/" className="text-white hover:text-green-500 text-lg">Home</Link>
-          <Link to="/exchange" className="text-white hover:text-green-500 text-lg">Exchange</Link>
-          <Link to="/profileview" className="text-white hover:text-green-500 text-lg">Profile</Link>
-        </div>
+
+
       </nav>
 
       <Routes>
