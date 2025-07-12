@@ -2,8 +2,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 import Landing from './pages/Landing'
 import AuthPage from './pages/Authpage' 
 import Exchange from './pages/Exchange'
-import UserData from "./pages/UserData"; // ✅ Import
-import ProfileView from "./pages/ProfileView"; // ✅ Import
+
 
 export default function App() {
   return (
@@ -11,17 +10,16 @@ export default function App() {
       <nav style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
         <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
         <Link to="/exchange" style={{ marginRight: '1rem' }}>Exchange</Link> {/* ✅ */}
-        <Link to="/authpage">Login / Signup</Link> {/* ✅ Replaced both */}
-        <Link to="/userdata"> UserData</Link>
-        <Link to="/profileview"> ProfileView</Link>
+        <Link to="/authpage" style={{ marginRight: '1rem' }}>Login / Signup</Link> {/* ✅ Replaced both */}
+       
+       
       </nav>
 
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/exchange" element={<Exchange />} /> {/* ✅ */}
         <Route path="/authpage" element={<AuthPage />} />
-        <Route path="/userdata" element={<UserData />} />
-        <Route path="/profileview" element={<ProfileView />} />
+
       </Routes>
     </div>
   )
