@@ -22,8 +22,8 @@ export default function App() {
         <div className="flex space-x-6 font-medium">
           <Link to="/" className="hover:text-green-600 transition">Home</Link>
           <Link to="/exchange" className="hover:text-green-600 transition">Exchange</Link>
-          <Link to="/login" className="hover:text-green-600 transition">Login</Link>
-          <Link to="/signup" className="hover:text-green-600 transition">Signup</Link>
+          <Link to="/authpage" className="hover:text-green-600 transition">Login</Link>
+          <Link to="/authpage" className="hover:text-green-600 transition">Signup</Link>
           <Link to="/Map" className="hover:text-green-600 transition">Map</Link>
 
         </div>

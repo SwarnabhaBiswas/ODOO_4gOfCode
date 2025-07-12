@@ -8,6 +8,5 @@ export default function ProtectedRoute({ children }) {
     return <Navigate to="/authpage" />;
   }
 
-  // Logged in, render the component
   return children;
 }
