@@ -7,7 +7,7 @@ import Exchange from './pages/Exchange' // ✅ Import
 export default function App() {
   return (
     <div>
-      <nav className='flex justify-around bg-blue-500 p-4 text-white'>
+      <nav >
         <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
         <Link to="/exchange" style={{ marginRight: '1rem' }}>Exchange</Link> {/* ✅ */}
         <Link to="/login" style={{ marginRight: '1rem' }}>Login</Link>
