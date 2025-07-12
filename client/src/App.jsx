@@ -3,6 +3,9 @@ import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Exchange from './pages/Exchange' // ✅ Import
+import NGOs from './pages/NGOs';
+import Listing  from './pages/Listing'
+import Map from "./pages/Map";
 
 export default function App() {
   return (
@@ -19,6 +22,8 @@ export default function App() {
           <Link to="/exchange" className="hover:text-green-600 transition">Exchange</Link>
           <Link to="/login" className="hover:text-green-600 transition">Login</Link>
           <Link to="/signup" className="hover:text-green-600 transition">Signup</Link>
+          <Link to="/Map" className="hover:text-green-600 transition">Map</Link>
+
         </div>
       </nav>
 
@@ -27,6 +32,9 @@ export default function App() {
         <Route path="/exchange" element={<Exchange />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/ngos" element={<NGOs />} />
+        <Route path="/listing" element={<Listing />} />
+        <Route path="/map" element={<Map />} />
       </Routes>
     </div>
   )
