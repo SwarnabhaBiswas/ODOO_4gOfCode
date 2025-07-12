@@ -6,12 +6,12 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function Landing() {
   const featuredItems = [
-    { id: 1, title: "Denim Jacket", condition: "Like New" },
-    { id: 2, title: "Vintage Dress", condition: "Good" },
-    { id: 3, title: "Running Shoes", condition: "Very Good" },
-    { id: 4, title: "Hoodie", condition: "Brand New" },
-    { id: 5, title: "Cargo Pants", condition: "Fair" },
-    { id: 6, title: "Graphic Tee", condition: "Like New" },
+    { id: 1, title: "Denim Jacket", condition: "Like New" , src:"https://i.pinimg.com/736x/12/f1/9f/12f19f17993816702a38e727decb128e.jpg"},
+    { id: 2, title: "Vintage Dress", condition: "Good", src:"https://i.pinimg.com/1200x/e4/20/3a/e4203aa04f739b6d754bbe8908a81c80.jpg" },
+    { id: 3, title: "Running Shoes", condition: "Very Good", src:"https://i.pinimg.com/1200x/52/d3/e1/52d3e125a69b221b50515b5cada44d2e.jpg" },
+    { id: 4, title: "Hoodie", condition: "Brand New" , src:"https://i.pinimg.com/1200x/f9/4c/68/f94c684664fe1b6bfecdad6be5787cf6.jpg"},
+    { id: 5, title: "Cargo Pants", condition: "Fair" ,src:"https://i.pinimg.com/1200x/1b/6c/25/1b6c25ea79762ebe4baba772d4d05fe8.jpg"},
+    { id: 6, title: "Graphic Tee", condition: "Like New" , src: "https://i.pinimg.com/1200x/35/70/67/357067f153004f8224864514a9df0598.jpg"},
   ];
 
   const sliderSettings = {
@@ -51,7 +51,7 @@ export default function Landing() {
           Join the movement to reduce textile waste and give clothes a second life.
         </p>
         <div className="flex justify-center gap-4 flex-wrap">
-          <Link to="/exchange" className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold shadow-md transition">
+          <Link to="/Listing" className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold shadow-md transition">
             Browse Items
           </Link>
           <Link to="/exchange" className="bg-white border border-green-600 text-green-700 px-6 py-3 rounded-full font-semibold shadow-md hover:bg-green-50 transition">
@@ -68,7 +68,7 @@ export default function Landing() {
             {featuredItems.map((item) => (
               <div key={item.id} className="px-3">
                 <div className="bg-white rounded-lg shadow p-4">
-                  <div className="h-40 bg-gray-300 mb-4 rounded" />
+                  <div className="h-40 bg-gray-300 mb-4 rounded"><img className='h-40 w-80' src={item.src} alt="" /></div>
                   <h3 className="text-lg font-medium">{item.title}</h3>
                   <p className="text-sm text-gray-500">Condition: {item.condition}</p>
                 </div>
@@ -82,11 +82,11 @@ export default function Landing() {
       <section className="py-16 px-6 bg-white text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-green-700 mb-4">
-            Got Clothes You Don't Wear Anymore?
+            Want Something New Without Buying New?
           </h2>
           <p className="text-gray-600 text-lg mb-10">
-            Give them a second life! List your unused clothes and help someone find their perfect fit.
-            Earn points or swap them with the community — it's easy, sustainable, and fun!
+            ReWear lets you swap your old favorites for fresh finds from the community. 
+            It's sustainable, smart, and totally hassle-free. Explore now and discover your next favorite outfit!
           </p>
 
           {/* Carousel Preview */}
@@ -95,8 +95,8 @@ export default function Landing() {
               {featuredItems.map((item) => (
                 <div key={item.id} className="px-3">
                   <div className="bg-white border rounded-lg shadow p-4">
-                    <div className="h-40 bg-gray-300 mb-4 rounded"></div>
-                    <h3 className="text-lg font-medium">{item.title}</h3>
+                   <div className="h-40 bg-gray-300 mb-4 rounded"><img className='h-40 w-80' src={item.src} alt="" /></div>
+                   <h3 className="text-lg font-medium">{item.title}</h3>
                     <p className="text-sm text-gray-500">Condition: {item.condition}</p>
                   </div>
                 </div>
@@ -106,7 +106,7 @@ export default function Landing() {
 
           {/* CTA Button */}
           <Link
-            to="/exchange"
+            to="/Listing"
             className="inline-block bg-green-600 text-white text-lg font-semibold px-8 py-3 rounded-full shadow-md hover:bg-green-700 transition"
           >
             Explore our wardrobe
@@ -117,11 +117,11 @@ export default function Landing() {
       <section className="py-16 px-6 bg-gray-50 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-green-700 mb-4">
-            Want Something New Without Buying New?
+            Got Clothes You Don't Wear Anymore?
           </h2>
           <p className="text-gray-700 text-lg mb-8">
-            ReWear lets you swap your old favorites for fresh finds from the community. 
-            It's sustainable, smart, and totally hassle-free. Explore now and discover your next favorite outfit!
+            Give them a second life! List your unused clothes and help someone find their perfect fit.
+            Earn points or swap them with the community — it's easy, sustainable, and fun!
           </p>
           
           <Link
@@ -145,7 +145,7 @@ export default function Landing() {
           </p>
 
           <Link
-            to="/exchange"
+            to="/NGOs"
             className="inline-block bg-green-600 text-white text-lg font-semibold px-8 py-3 rounded-full shadow-md hover:bg-green-700 transition"
           >
             More About NGOs

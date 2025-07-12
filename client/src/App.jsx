@@ -1,11 +1,11 @@
-import { Routes, Route, Link } from "react-router-dom";
-import Landing from "./pages/Landing";
-
-import Exchange from "./pages/Exchange"; 
-import UserData from "./pages/UserData"; 
-import AuthPage from './pages/Authpage' 
-import ProfileView from "./pages/ProfileView"; 
-import ProtectedRoute from "./Components/ProtectedRoute";
+import { Routes, Route, Link } from 'react-router-dom'
+import Landing from './pages/Landing'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import Exchange from './pages/Exchange' // ✅ Import
+import NGOs from './pages/NGOs';
+import Listing  from './pages/Listing'
+import Map from "./pages/Map";
 
 
 export default function App() {
@@ -17,14 +17,20 @@ export default function App() {
         </Link>
 
         <div className="flex space-x-6 font-medium">
-          <Link to="/" className="text-white hover:text-green-300 transition">Home</Link>
-          <Link to="/exchange" className="text-white hover:text-green-300 transition">Exchange</Link>
-          <Link to="/listing" className="text-white hover:text-green-300 transition">View Listings</Link>
-          <Link to="/authpage" className="text-white hover:text-green-300 transition">Login/Signup</Link>
+          <Link to="/" className="hover:text-green-600 transition">Home</Link>
+          <Link to="/exchange" className="hover:text-green-600 transition">Exchange</Link>
+          <Link to="/login" className="hover:text-green-600 transition">Login</Link>
+          <Link to="/signup" className="hover:text-green-600 transition">Signup</Link>
+          <Link to="/Map" className="hover:text-green-600 transition">Map</Link>
+
         </div>
       </nav>
       <Routes>
         <Route path="/" element={<Landing />} />
+      
+        <Route path="/ngos" element={<NGOs />} />
+        <Route path="/listing" element={<Listing />} />
+        <Route path="/map" element={<Map />} />
         <Route
           path="/exchange"
           element={
