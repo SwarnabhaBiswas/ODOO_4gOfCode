@@ -127,7 +127,7 @@ export default function Exchange() {
   };
 
   return (
-    <div className="min-h-screen w-screen bg-gray-50 p-6 font-sans">
+    <div className="min-h-[91vh] w-[100vw] bg-gray-50 p-6 font-sans">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
           Community Clothing Exchange
